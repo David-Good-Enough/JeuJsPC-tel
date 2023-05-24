@@ -5,7 +5,10 @@ var difficulty; // difficulty of the projectiles
 
 function preload(){// précharge les sprites
     fondL = loadImage('imagesdodge/fondL.jpg');
-    //astero = loadImage('images/Asteroid.png');
+    asteroL = loadImage('imagesdodge/AstL1.png');
+    asteroM = loadImage('imagesdodge/AstM1.png');
+    asteroMS = loadImage('imagesdodge/AstMS1.png');
+    asteroS = loadImage('imagesdodge/AstS1.png');
     navette = loadImage('imagesdodge/Navette.png');
   }
 
@@ -18,7 +21,7 @@ function setup() {
 	/* initialize player */
     objet = "Joueur";
   player = new Square(width / 2, height / 2,
-		30, color("#FFFFFF"), null, difficulty * 0.8, objet);
+		70, color("#FFFFFF"), null, difficulty * 0.8, objet);
 
 	textAlign(CENTER);
   textSize(40);
@@ -30,10 +33,10 @@ function draw() {
     image(fondL, 0,0);
 
   handleProjectiles();
-	handlePlayer();
-	handleKeys();
+    handlePlayer();
+    handleKeys();
 
-	attemptNewProjectile(frameCount);
+    attemptNewProjectile(frameCount);
 
   drawScore();
 }
@@ -153,12 +156,19 @@ function generateSquare() {
   var x = (plane) ? random(width) : ((random() > 0.5) ? 0 : width);
   var y = (plane) ? ((random() > 0.5) ? 0 : height) : random(height);
     objet = "Asteroide";
-  return new Square(x, y, random(35), randomColor(), player.position, difficulty, objet);
-}
 
-/**
- * returns a random color
- */
-function randomColor() {
-  return color(random(255), random(255), random(255));
+  var randsize = (random() > 4);
+  if (randsize == 0){
+    astero = asteroS;
+    return new Square(x, y, 54, player.position, difficulty, objet, astero);
+  }else if (randsize == 1){
+    astero = asteroMS;
+    return new Square(x, y, 73, player.position, difficulty, objet, astero);
+  }else if (randsize == 2){
+    astero = asteroM;
+    return new Square(x, y, 110, player.position, difficulty, objet, astero);
+  }else if (randsize == 3){
+    astero = asteroL;
+    return new Square(x, y, 176, player.position, difficulty, objet, astero);
+  }
 }

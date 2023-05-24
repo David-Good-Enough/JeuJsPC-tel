@@ -1,4 +1,4 @@
-function Square(x, y, size, color, player, speed, classe) {
+function Square(x, y, size, player, speed, classe, astero) {
 
     this.classe = classe;
 
@@ -9,7 +9,8 @@ function Square(x, y, size, color, player, speed, classe) {
     this.velocity = this.setVelocity(this.position, player);
   
     this.size = size; // dimensions
-    this.color = color;
+
+    this.astero = astero;
   }
   
   /**
@@ -33,13 +34,17 @@ function Square(x, y, size, color, player, speed, classe) {
    */
   Square.prototype.draw = function() {
     if (this.classe == "Asteroide"){
-        fill(this.color);
-        stroke(255);
-        strokeWeight(3);
-    
+        noStroke();
+        
+        image(astero, this.position.x, this.position.y);
+        noFill();
         rect(this.position.x, this.position.y, this.size, this.size);
+        /**/
     }else{
-        image(navette, this.position.x, this.position.y);
+      image(navette, this.position.x, this.position.y);
+      noFill();
+      rect(this.position.x, this.position.y, this.size, this.size);
+      /* */
     }
   };
   
@@ -57,18 +62,14 @@ function Square(x, y, size, color, player, speed, classe) {
    */
   Square.prototype.collidesWith = function(square) {
   
-      /* calculate this Square's location */
-    var cX = this.position.x + this.size / 2;
-    var cY = this.position.y + this.size / 2;
-      var center = createVector(cX, cY); // this Square's center point
+      if (square.position.x + square.size> this.position.x && 
+        square.position.x< this.position.x + this.size-20 && 
+        square.position.y + square.size > this.position.y && 
+        square.position.y < this.position.y + this.size-20) {
   
-      /* calculate passed Square's location */
-      var rX = square.position.x + square.size;
-      var rY = square.position.y + square.size;
-      var rightBound = createVector(rX, rY); // right-most bound of passed Square
-  
-    return !(center.x < square.position.x || center.x > rightBound.x ||
-        center.y < square.position.y || center.y > rightBound.y);
+          return true;
+      }
+    return false; 
   };
   
   /**
@@ -76,7 +77,7 @@ function Square(x, y, size, color, player, speed, classe) {
    */
   Square.prototype.move = function(xAcceleration, yAcceleration) {
   
-    this.velocity.add(createVector(xAcceleration, yAcceleration));
+    this.velocity.add(createVector((xAcceleration), yAcceleration));
   };
   
   /**

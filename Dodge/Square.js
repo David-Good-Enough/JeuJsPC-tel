@@ -35,7 +35,7 @@ function Square(x, y, size, player, speed, classe, asteroid) {
   Square.prototype.draw = function() {
     if (this.classe == "Asteroide"){
 
-        stroke(255);
+        noStroke();
         
         image(this.asteroid, this.position.x, this.position.y);
         noFill();

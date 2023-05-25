@@ -5,10 +5,46 @@ var difficulty; // difficulty of the projectiles
 
 function preload(){// précharge les sprites
     fondL = loadImage('imagesdodge/fondL.jpg');
-    asteroL = loadImage('imagesdodge/AstL1.png');
-    asteroM = loadImage('imagesdodge/AstM1.png');
-    asteroMS = loadImage('imagesdodge/AstMS1.png');
-    asteroS = loadImage('imagesdodge/AstS1.png');
+    asteroL1 = loadImage('imagesdodge/AstL1.png');
+    asteroL2 = loadImage('imagesdodge/AstL2.png');
+    asteroL3 = loadImage('imagesdodge/AstL3.png');
+    asteroL4 = loadImage('imagesdodge/AstL4.png');
+    asteroL5 = loadImage('imagesdodge/AstL5.png');
+    asteroL6 = loadImage('imagesdodge/AstL6.png');
+    asteroL7 = loadImage('imagesdodge/AstL7.png');
+    asteroL8 = loadImage('imagesdodge/AstL8.png');
+    asteroL9 = loadImage('imagesdodge/AstL9.png');
+
+    asteroM1 = loadImage('imagesdodge/AstM1.png');
+    asteroM2 = loadImage('imagesdodge/AstM2.png');
+    asteroM3 = loadImage('imagesdodge/AstM3.png');
+    asteroM4 = loadImage('imagesdodge/AstM4.png');
+    asteroM5 = loadImage('imagesdodge/AstM5.png');
+    asteroM6 = loadImage('imagesdodge/AstM6.png');
+    asteroM7 = loadImage('imagesdodge/AstM7.png');
+    asteroM8 = loadImage('imagesdodge/AstM8.png');
+
+    asteroMS1 = loadImage('imagesdodge/AstMS1.png');
+    asteroMS2 = loadImage('imagesdodge/AstMS2.png');
+    asteroMS3 = loadImage('imagesdodge/AstMS3.png');
+    asteroMS4 = loadImage('imagesdodge/AstMS4.png');
+    asteroMS5 = loadImage('imagesdodge/AstMS5.png');
+    asteroMS6 = loadImage('imagesdodge/AstMS6.png');
+    asteroMS7 = loadImage('imagesdodge/AstMS7.png');
+    asteroMS8 = loadImage('imagesdodge/AstMS8.png');
+    asteroMS9 = loadImage('imagesdodge/AstMS9.png');
+    asteroMS10 = loadImage('imagesdodge/AstMS10.png');
+    asteroMS11 = loadImage('imagesdodge/AstMS11.png');
+    asteroMS12 = loadImage('imagesdodge/AstMS12.png');
+    asteroMS13 = loadImage('imagesdodge/AstMS13.png');
+
+    asteroS1 = loadImage('imagesdodge/AstS1.png');
+    asteroS2 = loadImage('imagesdodge/AstS2.png');
+    asteroS3 = loadImage('imagesdodge/AstS3.png');
+    asteroS4 = loadImage('imagesdodge/AstS4.png');
+    asteroS5 = loadImage('imagesdodge/AstS5.png');
+    asteroS6 = loadImage('imagesdodge/AstS6.png');
+
     navette = loadImage('imagesdodge/Navette.png');
   }
 
@@ -157,18 +193,172 @@ function generateSquare() {
   var y = (plane) ? ((random() > 0.5) ? 0 : height) : random(height);
     objet = "Asteroide";
 
-  var randsize = (random() > 4);
+  var randsize = Math.floor(Math.random() * 4);
   if (randsize == 0){
-    astero = asteroS;
-    return new Square(x, y, 54, player.position, difficulty, objet, astero);
+
+    switch(Math.floor(Math.random() * 6)+1){
+      case 1:
+        astero = asteroS1;
+        size = 54;
+      break;
+      case 2:
+        astero = asteroS2;
+        size = 49;
+      break;
+      case 3:
+        astero = asteroS3;
+        size = 22;
+      break;
+      case 4:
+        astero = asteroS4;
+        size = 40;
+      break;
+      case 5:
+        astero = asteroS5;
+        size = 39;
+      break;
+      case 6:
+        astero = asteroS6;
+        size = 59;
+      break;
+    }
+    return new Square(x, y, size, player.position, difficulty, objet, astero);
   }else if (randsize == 1){
-    astero = asteroMS;
-    return new Square(x, y, 73, player.position, difficulty, objet, astero);
+  
+    switch(Math.floor(Math.random() * 13)+1){
+      case 1:
+        astero = asteroMS1;
+        size = 73;
+      break;
+      case 2:
+        astero = asteroMS2;
+        size = 90;
+      break;
+      case 3:
+        astero = asteroMS3;
+        size = 87;
+      break;
+      case 4:
+        astero = asteroMS4;
+        size = 97;
+      break;
+      case 5:
+        astero = asteroMS5;
+        size = 91;
+      break;
+      case 6:
+        astero = asteroMS6;
+        size = 85;
+      break;
+      case 7:
+        astero = asteroMS7;
+        size = 79;
+      break;
+      case 8:
+        astero = asteroMS8;
+        size = 93;
+      break;
+      case 9:
+        astero = asteroMS9;
+        size = 80;
+      break;
+      case 10:
+        astero = asteroMS10;
+        size = 80;
+      break;
+      case 11:
+        astero = asteroMS11;
+        size = 71;
+      break;
+      case 12:
+        astero = asteroMS12;
+        size = 88;
+      break;
+      case 13:
+        astero = asteroMS13;
+        size = 88;
+      break;
+    }
+    
+    return new Square(x, y, size, player.position, difficulty, objet, astero);
   }else if (randsize == 2){
-    astero = asteroM;
-    return new Square(x, y, 110, player.position, difficulty, objet, astero);
+
+    switch(Math.floor(Math.random() * 8)+1){
+      case 1:
+        astero = asteroM1;
+        size = 110;
+      break;
+      case 2:
+        astero = asteroM2;
+        size = 130;
+      break;
+      case 3:
+        astero = asteroM3;
+        size = 135;
+      break;
+      case 4:
+        astero = asteroM4;
+        size = 118;
+      break;
+      case 5:
+        astero = asteroM5;
+        size = 117;
+      break;
+      case 6:
+        astero = asteroM6;
+        size = 138;
+      break;
+      case 7:
+        astero = asteroM7;
+        size = 98;
+      break;
+      case 8:
+        astero = asteroM8;
+        size = 110;
+      break;
+    }
+
+    return new Square(x, y, size, player.position, difficulty, objet, astero);
   }else if (randsize == 3){
-    astero = asteroL;
-    return new Square(x, y, 176, player.position, difficulty, objet, astero);
+    
+    switch(Math.floor(Math.random() * 9)+1){
+      case 1:
+        astero = asteroL1;
+        size = 176;
+      break;
+      case 2:
+        astero = asteroL2;
+        size = 147;
+      break;
+      case 3:
+        astero = asteroL3;
+        size = 149;
+      break;
+      case 4:
+        astero = asteroL4;
+        size = 175;
+      break;
+      case 5:
+        astero = asteroL5;
+        size = 150;
+      break;
+      case 6:
+        astero = asteroL6;
+        size = 140;
+      break;
+      case 7:
+        astero = asteroL7;
+        size = 140;
+      break;
+      case 8:
+        astero = asteroL8;
+        size = 134;
+      break;
+      case 9:
+        astero = asteroL9;
+        size = 135;
+      break;
+    }
+    return new Square(x, y, size, player.position, difficulty, objet, astero);
   }
 }

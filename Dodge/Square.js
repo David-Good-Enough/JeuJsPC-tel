@@ -1,4 +1,4 @@
-function Square(x, y, size, player, speed, classe, astero) {
+function Square(x, y, size, player, speed, classe, asteroid) {
 
     this.classe = classe;
 
@@ -10,7 +10,7 @@ function Square(x, y, size, player, speed, classe, astero) {
   
     this.size = size; // dimensions
 
-    this.astero = astero;
+    this.asteroid = asteroid;
   }
   
   /**
@@ -34,9 +34,10 @@ function Square(x, y, size, player, speed, classe, astero) {
    */
   Square.prototype.draw = function() {
     if (this.classe == "Asteroide"){
-        noStroke();
+
+        stroke(255);
         
-        image(astero, this.position.x, this.position.y);
+        image(this.asteroid, this.position.x, this.position.y);
         noFill();
         rect(this.position.x, this.position.y, this.size, this.size);
         /**/
